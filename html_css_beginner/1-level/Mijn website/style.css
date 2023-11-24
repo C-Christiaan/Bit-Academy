@@ -1,0 +1,40 @@
+h1 { text-align: center;
+    color: rgb(253, 39, 164);
+    font-size: xx-large;
+    border-style: outset; 
+    border-color: orchid;
+}
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: black;
+    color: darkviolet;
+}
+.Killian {
+    height: 50%;
+    width: 50%;
+}
+.border1 {
+    border-bottom: ridge;
+    border-width: 1px;
+    border-color: orchid;
+}
+.back {
+    background-color: rgba(199, 43, 191, 0.062);
+}
+.info {
+    display: inline;
+}
+input {
+    display: block;
+}
+label {
+    display: block;
+}   
+nav {
+    text-align: center;
+    background-color: rgba(199, 43, 191, 0.062);
+}
+.mail {
+    text-align: center;
+    background-color: rgba(199, 43, 191, 0.062);
+}

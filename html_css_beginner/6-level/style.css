@@ -1,0 +1,14 @@
+.send {
+    border-radius: 100px;
+    background-color: orchid;
+    width: 80px;
+}
+
+.tekst {
+    border: 2px solid red;
+}
+
+.tekst:focus {
+    border: 2px solid green;
+    outline: none;
+}

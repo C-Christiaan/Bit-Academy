@@ -1,0 +1,13 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: black;
+    color: darkviolet;
+}
+h1 { text-align: center;
+    color: rgb(253, 39, 164);
+    font-size: xx-large;
+}
+.border {
+    border-style: outset;
+    border-color: orchid ;
+}
