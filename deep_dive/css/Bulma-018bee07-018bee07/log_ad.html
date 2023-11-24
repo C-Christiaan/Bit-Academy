@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bit Academy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body class="has-background-success">
+
+<div class="columns is-mobile">
+  <div class="column is-full">
+    <header>
+      <nav class="navbar has-background-white" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a href="index.html">
+            <img src="bit.jpeg" alt="Avatar" class="avatar" width="50px" height="auto">
+          </a>
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu" href="index.html">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="index.html">Home</a>
+            <a class="navbar-item" href="log_st.html">Student</a>
+            <a class="navbar-item" href="log_ad.html">Coach</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+<section class="hero is-success is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-mobile is-half-tablet">
+          <form action="admin.html" method="post" id="inlog-form" class="has-background-white has-text-dark has-border-radius" style="min-width: 300px; padding: 20px;">
+            <label for="naam"><b>Gebruikersnaam</b></label>
+            <input type="text" name="naam" id="naam" required>
+            <br>
+            <label for="wachtwoord"><b>Wachtwoord</b></label>
+            <input type="password" name="psw" id="wachtwoord" required>
+            
+            <button type="button" onclick="Form()">Login</button>
+            <label>
+              <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+            <span class="psw" style="display: block; margin-top: 10px;">Forgot <a href="#">password?</a></span>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.navbar-burger');
+    const menu = document.querySelector('.navbar-menu');
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('is-active');
+      menu.classList.toggle('is-active');
+    });
+  });
+
+  function Form() {
+    const username = document.getElementById("naam").value;
+    const password = document.getElementById("wachtwoord").value;
+
+    if (username === "admin" && password === "admin") {
+      document.getElementById("inlog-form").submit();
+    } else if (username !== 'admin' && password !== 'admin') {
+      alert("Gebruikersnaam of wachtwoord onjuist");
+    } else {
+      alert("Vul alle velden in.");
+    }
+  }
+</script>
+</body>
+</html>

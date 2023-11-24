@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bit Academy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body class="has-background-success">
+
+<div class="columns">
+  <div class="column is-full">
+    <header>
+      <nav class="navbar has-background-white" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="index.html">
+                <img src="bit.jpeg" alt="Avatar" class="avatar" width="50px" height="auto">
+            </a>
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu" href="index.html">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="index.html">Home</a>
+            <a class="navbar-item" href="log_st.html">Student</a>
+            <a class="navbar-item" href="log_ad.html">Coach</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+<section class="hero is-success is-fullheight-with-navbar">
+    <div class="hero-body">
+<div id="checkinButtonContainer" class="container"></div>
+
+<div id="checkinFormContainer" class="container" style="display: none;">
+  <form id="checkinForm">
+    <div class="field">
+      <label class="label">Naam</label>
+      <div class="control">
+        <input id="nameInput" class="input" type="text" placeholder="Vul hier je naam in">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Incheckdatum en tijd</label>
+      <div class="control">
+        <input type="time" id="incheck" name="incheck">
+      </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Doelstelling</label>
+        <div class="control">
+          <textarea id="commentsInput" class="textarea" placeholder="Vul hier je doelstelling van vandaag in"></textarea>
+        </div>
+      </div>
+
+    <div class="field">
+      <div class="control">
+        <button type="button" id="confirmCheckin" class="button is-primary">Bevestig Inchecken</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const currentLocation = {
+    latitude: 52.5185494,
+    longitude: 4.9729060,
+  };
+
+  const userLocation = {
+    latitude: 52.5185494,
+    longitude: 4.9729060,
+  };
+  
+  const distance = calculateDistance(currentLocation, userLocation);
+
+  const proximityThreshold = 0.001;
+
+  if (distance <= proximityThreshold) {
+    const checkinButtonContainer = document.getElementById('checkinButtonContainer');
+    const checkinButton = document.createElement('button');
+    checkinButton.className = 'button is-success';
+    checkinButton.textContent = 'Inchecken';
+    checkinButtonContainer.appendChild(checkinButton);
+
+    checkinButton.addEventListener('click', function () {
+      const checkinFormContainer = document.getElementById('checkinFormContainer');
+      checkinFormContainer.style.display = 'block';
+
+      checkinButton.style.display = 'none';
+    });
+
+    const confirmCheckinButton = document.getElementById('confirmCheckin');
+    confirmCheckinButton.addEventListener('click', function () {
+      const nameInput = document.getElementById('nameInput').value;
+      const commentsInput = document.getElementById('commentsInput').value;
+
+      alert(`Ingecheckt!\nNaam: ${nameInput}\nOpmerkingen: ${commentsInput}`);
+    });
+  }
+});
+
+function calculateDistance(location1, location2) {
+  const earthRadius = 6371;
+
+  const toRadians = angle => (angle * Math.PI) / 180;
+
+  const latDiff = toRadians(location2.latitude - location1.latitude);
+  const lonDiff = toRadians(location2.longitude - location1.longitude);
+
+  const a = Math.sin(latDiff / 2) * Math.sin(latDiff / 2) +
+            Math.cos(toRadians(location1.latitude)) * Math.cos(toRadians(location2.latitude)) *
+            Math.sin(lonDiff / 2) * Math.sin(lonDiff / 2);
+
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  const distance = earthRadius * c;
+
+  return distance;
+}
+</script>
+
+</body>
+</html>
