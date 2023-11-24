@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verwerkte Gegevens</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Verwerkte Gegevens</h1>
+
+    <?php
+    // Lees de opgeslagen gegevens uit het tekstbestand
+    $opgeslagenGegevens = file_get_contents("opgeslagen_gegevens.txt");
+
+    // Toon de opgeslagen gegevens op de pagina
+    echo "<pre>$opgeslagenGegevens</pre>";
+    ?>
+    
+  </div>
+</section>
+
+</body>
+</html>
